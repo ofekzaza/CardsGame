@@ -24,11 +24,7 @@ namespace CardGame.Mocks
             //Cards.ForEach(i => Console.Write(i + "-"));
 
             List<int> Cards = new List<int> { 1, 8, 6, 4, 9, 2, 5, 7, 10, 3, 4, 7, 2, 1, 9, 10, 5, 8, 6, 3, 4, 7, 9, 10, 2, 3, 5, 8, 6, 1, 9, 10, 7, 8, 5, 6, 4, 2, 3, 1 };
-            //Cards.ForEach(i => Console.Write(i));
-            foreach (int i in Cards)
-            {
-                Console.WriteLine(i);
-            }
+            Cards.ForEach(i => Console.Write(i));
 
             //_groupAmount = 4;
         }
