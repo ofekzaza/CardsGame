@@ -16,7 +16,8 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
 
         public void StartPlaying()
         {
-            gameFuncs.IfWantsToPlay_GetANewCard();
+            gameFuncs.Play();
+            gameFuncs.PlayerChooseToStopPlaying();
         }
     }
 }

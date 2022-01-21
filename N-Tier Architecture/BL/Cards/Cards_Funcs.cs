@@ -1,4 +1,5 @@
-﻿using CardGame.N_Tier_Architecture.BL.Player;
+﻿using CardGame.N_Tier_Architecture.BL.Cards;
+using CardGame.N_Tier_Architecture.BL.Player;
 using CardGame.N_Tier_Architecture.UI.Print;
 using System;
 using System.Collections.Generic;
@@ -6,30 +7,16 @@ using System.Text;
 
 namespace CardGame.Mocks
 {
-    class Cards_Funcs : CreateCardPackage
+    class Cards_Funcs : GetANewCard
     {
-        public List<int> CardList;
-        public int Card { get; set; }
-        public AskForActions A;
-        public CardsKeeper PlayersCards;
-
         public Cards_Funcs() : base ()
         {
-            CardList = base.Cards;
             A = new AskForActions();
-            PlayersCards = new CardsKeeper();
         } 
-        public void NewCard()
+        public void NewCard(int Card)
         {
-            A.AskToTakeACard();
-            GetUsersInputForCard();
             AllValidationsOnNumber(Card);
             PlayersCards.PutNewCardToPackage(Card);
-        }
-
-        public void GetUsersInputForCard()
-        {
-            Card = int.Parse(Console.ReadLine());
         }
 
         public void AllValidationsOnNumber(int number)
@@ -43,7 +30,7 @@ namespace CardGame.Mocks
 
         public bool PermissionToRemoveCardFromPackage(int number)
         {
-            return (ValidateRange(number) && ValidateNumberExistingInTheList(number) && PlayersCards.ValidatePackageWorth());
+            return (ValidateNumberExistingInTheList(number) && PlayersCards.ValidatePackageWorth());
         }
 
         public bool ValidateNumberExistingInTheList(int number)
@@ -55,22 +42,6 @@ namespace CardGame.Mocks
             }
 
             return (true);
-        }
-
-        public bool ValidateRange(int number)
-        {
-            if (!IsNumberInTheRightRange(number))
-            {
-                A.TheNumberIsInTheWrongRange();
-                return (false);
-            }
-
-            return (true);
-        }
-
-        public bool IsNumberInTheRightRange(int number)
-        {
-            return (number > 0 && number <= 10);
         }
 
         public bool DoesNumberExistInTheList(int number)

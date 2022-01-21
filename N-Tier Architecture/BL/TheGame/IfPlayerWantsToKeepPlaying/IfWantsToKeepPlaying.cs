@@ -15,10 +15,10 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
 
         public bool doestThePlayerWantsToTakeOutANewCard()
         {
-            return ValidatePlayersAsnwer(GetPayersAnswerForKeepPlayingTheGame()) == KeepPlaying;
+            return ValidatePlayersAsnwer(GetPlayersAnswerForKeepPlayingTheGame()) == KeepPlaying;
         }
 
-        public int GetPayersAnswerForKeepPlayingTheGame()
+        public int GetPlayersAnswerForKeepPlayingTheGame()
         {
             A.DoesWantToTakeCardOute();
             return int.Parse(Console.ReadLine());
@@ -34,7 +34,7 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
             return (answer);
         }
 
-        public void GetACorrectAnswer(int answer)
+        public new void GetACorrectAnswer(int answer)
         {
             while (!IsAnswerCorrect(answer))
             {

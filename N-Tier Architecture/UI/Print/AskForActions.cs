@@ -13,7 +13,7 @@ namespace CardGame.N_Tier_Architecture.UI.Print
 
         public void TheNumberIsInTheWrongRange()
         {
-            Console.WriteLine("The Number Is In The Wrong Range. It must be over zero and under 10.");
+            Console.WriteLine("The Number Is In The Wrong Range. It must be between 1 and 13.");
         }
 
         public void TheNumberIsNotFoundInTheList()
@@ -49,6 +49,31 @@ namespace CardGame.N_Tier_Architecture.UI.Print
         public void ComputerWonTheGame(int comNumber, int playerAmount)
         {
             Console.WriteLine("It Has Chosen " + comNumber + ". Your Worth Is " + playerAmount + ". You Lost. Computer Won This Game.");
+        }
+
+        public void ChooseValueOfCard()
+        {
+            Console.WriteLine("Since You Picked An Ace, You Choose This Card's Value. Press 1 Or 11.");
+        }
+
+        public void WrongInputForAce()
+        {
+            Console.WriteLine("Wrong Input. Press 11 or 1 As Card's Value.");
+        }
+
+        public void PickedPrince()
+        {
+            Console.WriteLine("You Got The Prince Card! It's Value Is 10!");
+        }
+
+        public void PickedQueen()
+        {
+            Console.WriteLine("You Got The Queen Card! It's Value Is 10!");
+        }
+
+        public void PickedKing()
+        {
+            Console.WriteLine("You Got The King Card! It's Value Is 10!");
         }
     }
 }
