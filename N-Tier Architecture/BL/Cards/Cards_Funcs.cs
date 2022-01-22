@@ -15,50 +15,15 @@ namespace CardGame.Mocks
         } 
         public void NewCard(int Card)
         {
-            AllValidationsOnNumber(Card);
-            PlayersCards.PutNewCardToPackage(Card);
-        }
-
-        public void AllValidationsOnNumber(int number)
-        {
-            if (PermissionToRemoveCardFromPackage(number))
+            if (PermissionToRemoveCardFromPackage(Card))
             {
-                RemoveChosenCardFronPackage(number);
-                A.CardIsTakenOut(number);
+                PlayersCards.PutNewCardToPackage(Card);
             }
         }
 
         public bool PermissionToRemoveCardFromPackage(int number)
         {
-            return (ValidateNumberExistingInTheList(number) && PlayersCards.ValidatePackageWorth());
-        }
-
-        public bool ValidateNumberExistingInTheList(int number)
-        {
-            if (!DoesNumberExistInTheList(number))
-            {
-                A.TheNumberIsNotFoundInTheList();
-                return (false);
-            }
-
-            return (true);
-        }
-
-        public bool DoesNumberExistInTheList(int number)
-        {
-            // CardList.ForEach(c => if (c == number) { return true; });
-            foreach (int card in CardList)
-            {
-                if (card == number)
-                    return true;
-            }
-
-            return false;
-        }
-
-        public void RemoveChosenCardFronPackage(int number)
-        {
-            CardList.Remove(number);
+            return (PlayersCards.ValidatePackageWorth());
         }
     }
 }

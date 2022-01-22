@@ -23,9 +23,8 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
             gameFuncs.Play();
             gameFuncs.PlayerChooseToStopPlaying();
 
-            if (gameFuncs.DoesPlayerWin())
+            if (gameFuncs.PlayerWon)
             {
-                GetANewCard.RestartList();
                 manyRounds.Play();
             }
 

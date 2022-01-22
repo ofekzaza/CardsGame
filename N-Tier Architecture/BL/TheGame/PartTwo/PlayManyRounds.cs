@@ -25,10 +25,17 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame.PartTwo
 
         public void Play()
         {
-            while (keepPlaying.doestThePlayerWantsToTakeOutANewCard())
+            DefaultValue();
+
+            while (gameFuncs.PlayerWon && keepPlaying.doestThePlayerWantsToTakeOutANewCard())
             {
                 StartPlayingRound();
             }
+        }
+
+        public void DefaultValue()
+        {
+            gameFuncs.PlayerWon = true;
         }
 
         public void StartPlayingRound()
@@ -47,6 +54,7 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame.PartTwo
         {
             MakeItHarder();
             RestartPackage();
+            GetANewCard.RestartList();
         }
 
         public void RestartPackage()

@@ -24,42 +24,16 @@ namespace CardGame.N_Tier_Architecture.BL.Cards
         public void GetNewCard()
         {
             A.AskToTakeACard();
-            GetUsersInputForCard();
-            GetACorrectAnswer(Card);
-        }
-
-        public void GetUsersInputForCard()
-        {
-            Card = int.Parse(Console.ReadLine());
-        }
-
-        public void GetACorrectAnswer(int answer)
-        {
-            while (!ValidateRange(answer))
-            {
-                answer = int.Parse(Console.ReadLine());
-            }
-        }
-
-        public bool ValidateRange(int number)
-        {
-            if (!IsNumberInTheRightRange(number))
-            {
-                A.TheNumberIsInTheWrongRange();
-                return (false);
-            }
-
-            return (true);
-        }
-
-        public bool IsNumberInTheRightRange(int number)
-        {
-            return (number > 0 && number <= 13);
+            Card = CardList[0];
+            CardList.RemoveAt(0);
+            A.ChosenCard(Card);
         }
 
         public static void RestartList()
         {
+            //PlayersCards = new CardsKeeper();
             CardList = Cards;
+            //Console.WriteLine("first: " + CardList[0]);
         }
     }
 }

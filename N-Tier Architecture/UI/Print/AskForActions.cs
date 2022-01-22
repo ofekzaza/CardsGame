@@ -8,7 +8,12 @@ namespace CardGame.N_Tier_Architecture.UI.Print
     {
         public void AskToTakeACard()
         {
-            Console.WriteLine("Take One Card Out");
+            Console.WriteLine("You Are Taking One Card Out.");
+        }
+
+        public void ChosenCard(int number)
+        {
+            Console.WriteLine("The Card You Got Is: " + number);
         }
 
         public void TheNumberIsInTheWrongRange()
