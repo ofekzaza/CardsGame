@@ -115,6 +115,7 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
         {
             if (DoesPlayerWin())
             {
+                GetANewCard.PlayersCards.WinningCount++;
                 A.PlayerWonTheGame();
             }
             else

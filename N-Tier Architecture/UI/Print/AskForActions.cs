@@ -75,5 +75,21 @@ namespace CardGame.N_Tier_Architecture.UI.Print
         {
             Console.WriteLine("You Got The King Card! It's Value Is 10!");
         }
+
+        public void PlayersWinAmount(int win)
+        {
+            Console.WriteLine("You Have Won " + win + " Times!");
+        }
+
+        // Part Two
+        public void NewRound()
+        {
+            Console.WriteLine("Do You Want To Play A New And Harder Round? Press 1 to continue and 0 to stop.");
+        }
+
+        public void HarderLevel()
+        {
+            Console.WriteLine("The Level Got Harder. Computer Starts Guessing From A Bigger Start.");
+        }
     }
 }

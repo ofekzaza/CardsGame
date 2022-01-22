@@ -9,11 +9,13 @@ namespace CardGame.N_Tier_Architecture.BL.Player
     {
         public int CardsPackage { get; set; }
         public AskForActions a;
+        public int WinningCount { get; set; }
 
         public CardsKeeper()
         {
             a = new AskForActions();
             CardsPackage = 0;
+            WinningCount = 0;
         }
 
         public void PutNewCardToPackage(int number)

@@ -9,14 +9,14 @@ namespace CardGame.N_Tier_Architecture.BL.Cards
 {
     class GetANewCard : CreateCardPackage
     {
-        public List<int> CardList;
+        public static List<int> CardList;
         public int Card { get; set; }
         public AskForActions A;
         public static CardsKeeper PlayersCards { get; set; }
 
         public GetANewCard() : base ()
         {
-            CardList = base.Cards;
+            CardList = Cards;
             A = new AskForActions();
             PlayersCards = new CardsKeeper();
         }
@@ -55,6 +55,11 @@ namespace CardGame.N_Tier_Architecture.BL.Cards
         public bool IsNumberInTheRightRange(int number)
         {
             return (number > 0 && number <= 13);
+        }
+
+        public static void RestartList()
+        {
+            CardList = Cards;
         }
     }
 }
