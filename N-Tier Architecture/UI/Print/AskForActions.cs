@@ -144,5 +144,10 @@ namespace CardGame.N_Tier_Architecture.UI.Print
         {
             Console.WriteLine("Computer With The Higher Guess Is: {0}, And It's Guess Was: {1}", j + 1, value);
         }
+
+        public void NoComputerPlayers()
+        {
+            Console.WriteLine("The Users Have Chosen Not To Have Computer Players.");
+        }
     }
 }
