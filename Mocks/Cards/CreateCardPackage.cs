@@ -6,7 +6,7 @@ namespace CardGame.Mocks
 {
     class CreateCardPackage
     {
-        public List<int> Cards { get; set; }
+        public static List<int> Cards { get; set; }
 
         public CreateCardPackage()
         {

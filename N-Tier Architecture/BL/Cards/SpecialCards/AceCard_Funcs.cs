@@ -19,7 +19,6 @@ namespace CardGame.N_Tier_Architecture.BL.Cards
             A.ChooseValueOfCard();
             GetUsersInputForCard();
             PressCorrectValue();     
-            AllValidationsOnNumber(Card);
             AddValueToPlayersCardPackage();
         }
 
@@ -43,6 +42,11 @@ namespace CardGame.N_Tier_Architecture.BL.Cards
             }
         }
 
+        public bool IsCorrectValue()
+        {
+            return (Card == CardNumber || Card == Value);
+        }
+
         public void GetCorrectValue()
         {
             while (!IsCorrectValue())
@@ -52,51 +56,10 @@ namespace CardGame.N_Tier_Architecture.BL.Cards
             }
         }
 
-        public bool IsCorrectValue()
+        public void GetUsersInputForCard()
         {
-            return (Card == CardNumber || Card == Value);
+            Card = int.Parse(Console.ReadLine());
         }
 
-        public void AllValidationsOnNumber()
-        {
-            if (PermissionToRemoveCardFromPackage(CardNumber))
-            {
-                RemoveChosenCardFronPackage(CardNumber);
-                A.CardIsTakenOut(CardNumber);
-            }
-        }
-
-        public new bool PermissionToRemoveCardFromPackage(int number)
-        {
-            return (ValidateNumberExistingInTheList(number) && PlayersCards.ValidatePackageWorth());
-        }
-
-        public bool ValidateNumberExistingInTheList()
-        {
-            if (!DoesNumberExistInTheList(CardNumber))
-            {
-                A.TheNumberIsNotFoundInTheList();
-                return (false);
-            }
-
-            return (true);
-        }
-
-        public bool DoesNumberExistInTheList()
-        {
-            // CardList.ForEach(c => if (c == number) { return true; });
-            foreach (int card in CardList)
-            {
-                if (card == CardNumber)
-                    return true;
-            }
-
-            return false;
-        }
-
-        public void RemoveChosenCardFronPackage()
-        {
-            CardList.Remove(CardNumber);
-        }
     }
 }

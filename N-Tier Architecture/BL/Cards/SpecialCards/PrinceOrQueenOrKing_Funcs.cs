@@ -5,17 +5,23 @@ using System.Text;
 
 namespace CardGame.N_Tier_Architecture.BL.Cards.SpecialCards
 {
-    class PrinceOrQueenOrKing_Funcs : Cards_Funcs
+    class PrinceOrQueenOrKing_Funcs : AceCard_Funcs
     {
-        public const int CardNumber = 11 | 12 | 13;
-        public const int Value = 10;
+        public new const int Value = 10;
         public PrinceOrQueenOrKing_Funcs() : base ()
         {
         }
 
         public new void NewCard(int Card)
         {
-            AllValidationsOnNumber(Card);
+            A.ChooseValueOfCard();
+            GetUsersInputForCard();
+            PressCorrectValue();
+            AddValueToPlayersCardPackage();
+        }
+
+        public new void AddValueToPlayersCardPackage()
+        {
             PlayersCards.PutNewCardToPackage(Value);
         }
     }

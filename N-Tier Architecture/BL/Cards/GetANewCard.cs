@@ -9,14 +9,14 @@ namespace CardGame.N_Tier_Architecture.BL.Cards
 {
     class GetANewCard : CreateCardPackage
     {
-        public List<int> CardList;
+        public static List<int> CardList;
         public int Card { get; set; }
         public AskForActions A;
         public static CardsKeeper PlayersCards { get; set; }
 
         public GetANewCard() : base ()
         {
-            CardList = base.Cards;
+            CardList = Cards;
             A = new AskForActions();
             PlayersCards = new CardsKeeper();
         }
@@ -24,37 +24,16 @@ namespace CardGame.N_Tier_Architecture.BL.Cards
         public void GetNewCard()
         {
             A.AskToTakeACard();
-            GetUsersInputForCard();
-            GetACorrectAnswer(Card);
+            Card = CardList[0];
+            CardList.RemoveAt(0);
+            A.ChosenCard(Card);
         }
 
-        public void GetUsersInputForCard()
+        public static void RestartList()
         {
-            Card = int.Parse(Console.ReadLine());
-        }
-
-        public void GetACorrectAnswer(int answer)
-        {
-            while (!ValidateRange(answer))
-            {
-                answer = int.Parse(Console.ReadLine());
-            }
-        }
-
-        public bool ValidateRange(int number)
-        {
-            if (!IsNumberInTheRightRange(number))
-            {
-                A.TheNumberIsInTheWrongRange();
-                return (false);
-            }
-
-            return (true);
-        }
-
-        public bool IsNumberInTheRightRange(int number)
-        {
-            return (number > 0 && number <= 13);
+            //PlayersCards = new CardsKeeper();
+            CardList = Cards;
+            //Console.WriteLine("first: " + CardList[0]);
         }
     }
 }

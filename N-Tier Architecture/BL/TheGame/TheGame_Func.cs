@@ -23,6 +23,7 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
         public const int prince = 11;
         public const int queen = 12;
         public const int king = 11;
+        public bool PlayerWon { get; set; }
         public int ComputersMove { get; set; }
 
         public TheGame_Func()
@@ -35,6 +36,7 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
             CardsFuncs = new Cards_Funcs();
             A = new AskForActions();
             SpecialCards = new PrinceOrQueenOrKing_Funcs();
+            PlayerWon = false;
         }
 
         public void Play()
@@ -115,10 +117,13 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
         {
             if (DoesPlayerWin())
             {
+                PlayerWon = true;
+                GetANewCard.PlayersCards.WinningCount++;
                 A.PlayerWonTheGame();
             }
             else
             {
+                PlayerWon = false;
                 A.ComputerWonTheGame(ComputersMove, GetANewCard.PlayersCards.CardsPackage);
             }
         }

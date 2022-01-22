@@ -8,7 +8,12 @@ namespace CardGame.N_Tier_Architecture.UI.Print
     {
         public void AskToTakeACard()
         {
-            Console.WriteLine("Take One Card Out");
+            Console.WriteLine("You Are Taking One Card Out.");
+        }
+
+        public void ChosenCard(int number)
+        {
+            Console.WriteLine("The Card You Got Is: " + number);
         }
 
         public void TheNumberIsInTheWrongRange()
@@ -74,6 +79,22 @@ namespace CardGame.N_Tier_Architecture.UI.Print
         public void PickedKing()
         {
             Console.WriteLine("You Got The King Card! It's Value Is 10!");
+        }
+
+        public void PlayersWinAmount(int win)
+        {
+            Console.WriteLine("You Have Won " + win + " Times!");
+        }
+
+        // Part Two
+        public void NewRound()
+        {
+            Console.WriteLine("Do You Want To Play A New And Harder Round? Press 1 to continue and 0 to stop.");
+        }
+
+        public void HarderLevel()
+        {
+            Console.WriteLine("The Level Got Harder. Computer Starts Guessing From A Bigger Start.");
         }
     }
 }
