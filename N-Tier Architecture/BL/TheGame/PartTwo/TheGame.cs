@@ -23,11 +23,21 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
             gameFuncs.Play();
             gameFuncs.PlayerChooseToStopPlaying();
 
+            IfWonTheFirstGame_CanChooseToGoForManyRounds();
+
+            WinningAmount();
+        }
+
+        public void IfWonTheFirstGame_CanChooseToGoForManyRounds()
+        {
             if (gameFuncs.PlayerWon)
             {
                 manyRounds.Play();
             }
+        }
 
+        public void WinningAmount()
+        {
             A.PlayersWinAmount(GetANewCard.PlayersCards.WinningCount);
         }
     }

@@ -18,6 +18,17 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
             return ValidatePlayersAsnwer(GetPlayersAnswerForKeepPlayingTheGame()) == KeepPlaying;
         }
 
+        public bool doestThePlayerWantsToStartANewRound()
+        {
+            return ValidatePlayersAsnwer(GetPlayersAnswerForNewRound()) == KeepPlaying;
+        }
+
+        public int GetPlayersAnswerForNewRound()
+        {
+            A.RoundIsOver();
+            return int.Parse(Console.ReadLine());
+        }
+
         public int GetPlayersAnswerForKeepPlayingTheGame()
         {
             A.DoesWantToTakeCardOute();
@@ -34,7 +45,7 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
             return (answer);
         }
 
-        public new void GetACorrectAnswer(int answer)
+        public void GetACorrectAnswer(int answer)
         {
             while (!IsAnswerCorrect(answer))
             {

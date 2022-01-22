@@ -43,9 +43,14 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
         {
             while (CanKeepPlaying())
             {
-                GetCard.GetNewCard();
-                ActionsOnCard();
+                Game();
             }
+        }
+
+        public void Game()
+        {
+            GetCard.GetNewCard();
+            ActionsOnCard();
         }
 
         public void ActionsOnCard()
@@ -110,7 +115,13 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
         public void PlayerChooseToStopPlaying()
         {
             if (!GetANewCard.PlayersCards.GetCardsPackage())
+            {
                 WinningAnnouncment();
+            }
+            else
+            {
+                PlayerWon = false;
+            }
         }
 
         public void WinningAnnouncment()
