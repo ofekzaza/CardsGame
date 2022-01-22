@@ -1,21 +1,14 @@
-﻿using CardGame.N_Tier_Architecture.UI.Print;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CardGame.N_Tier_Architecture.BL.Player
 {
-    class CardsKeeper
+    class CardKeeper_Funcs : CardsKeeper
     {
-        public int CardsPackage { get; set; }
-        public AskForActions a;
-        public int WinningCount { get; set; }
-
-        public CardsKeeper()
+        public const int MaxRange = 21;
+        public CardKeeper_Funcs() : base ()
         {
-            a = new AskForActions();
-            CardsPackage = 0;
-            WinningCount = 0;
         }
 
         public void PutNewCardToPackage(int number)
@@ -36,7 +29,7 @@ namespace CardGame.N_Tier_Architecture.BL.Player
 
         public bool GetCardsPackage()
         {
-            return (CardsPackage > 21);
+            return (CardsPackage > MaxRange);
         }
     }
 }

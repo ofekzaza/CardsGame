@@ -12,13 +12,13 @@ namespace CardGame.N_Tier_Architecture.BL.Cards
         public static List<int> CardList;
         public int Card { get; set; }
         public AskForActions A;
-        public static CardsKeeper PlayersCards { get; set; }
+        public static CardKeeper_Funcs PlayersCards { get; set; }
 
         public GetANewCard() : base ()
         {
             CardList = Cards;
             A = new AskForActions();
-            PlayersCards = new CardsKeeper();
+            PlayersCards = new CardKeeper_Funcs();
         }
 
         public void GetNewCard()
