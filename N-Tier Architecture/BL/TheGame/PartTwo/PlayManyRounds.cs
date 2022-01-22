@@ -27,10 +27,15 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame.PartTwo
         {
             DefaultValue();
 
-            while (gameFuncs.PlayerWon && keepPlaying.doestThePlayerWantsToTakeOutANewCard())
+            while (IfCanAndWantPlay())
             {
                 StartPlayingRound();
             }
+        }
+
+        public bool IfCanAndWantPlay()
+        {
+            return (gameFuncs.PlayerWon && keepPlaying.doestThePlayerWantsToTakeOutANewCard());
         }
 
         public void DefaultValue()

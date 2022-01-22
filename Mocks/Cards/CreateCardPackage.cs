@@ -16,10 +16,6 @@ namespace CardGame.Mocks
             List<int> list3 = new List<int> { 4, 7, 9, 10, 2, 3, 5, 8, 6, 1 };
             List<int> list4 = new List<int> { 9, 10, 7, 8, 5, 6, 4, 12, 2, 3, 1 };
             Cards = new List<int>();
-            //list2.ForEach(i => Cards.Add(i));
-            //list3.ForEach(i => Cards.Add(i));
-            //list4.ForEach(i => Cards.Add(i));
-
 
             Cards = list1.Concat(list2).Concat(list3).Concat(list4).ToList();
             Cards.ForEach(i => Console.Write(i + "-"));

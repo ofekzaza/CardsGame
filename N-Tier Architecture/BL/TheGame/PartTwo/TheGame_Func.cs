@@ -18,13 +18,14 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
         public AceCard_Funcs AceCard { get; set; }
         public Cards_Funcs CardsFuncs { get; set; }
         public AskForActions A { get; set; }
-        public PrinceOrQueenOrKing_Funcs SpecialCards { get; set; }
+        public PrinceOrQueenOrKing_Funcs SpecialCards { get; set; }    
+        public bool PlayerWon { get; set; }
+        public int ComputersMove { get; set; }
         public const int ace = 1;
         public const int prince = 11;
         public const int queen = 12;
         public const int king = 11;
-        public bool PlayerWon { get; set; }
-        public int ComputersMove { get; set; }
+
 
         public TheGame_Func()
         {

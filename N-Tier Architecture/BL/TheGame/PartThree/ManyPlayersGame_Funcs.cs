@@ -22,42 +22,67 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame.PartThree
             CompPlayers = new ComputerPlayers();
         }
 
-        public void SetPlayers()
+        public void StartPlayingTheWholeGame()
         {
-            PlayersAndScores = Players.SetPlayersAndScores();
-        }
-
-        public void DoesWantToPlay()
-        {
-            SetPlayers();
-            InitMatrix();
-            GetPerPlayer();
-
-            while (DoTheyWantAnotherRound.doestThePlayerWantsToStartANewRound())
-            {
-                GetPerPlayer();
-            }
-            CompPlayers.Play();
-            CompPlayers.GetMaxComputerPlayer();
+            PlayOnlyTheFirstRound();
+            IfWantsToPlayAnotherRoundThenStartPlaying();
+            ComputerPlayersPlayTheirTurn();
 
             A.PlayersMatrixPrint(PlayersAndScores);
         }
 
-        public void GetPerPlayer()
+        public void ComputerPlayersPlayTheirTurn()
+        {
+            CompPlayers.Play();
+            CompPlayers.GetMaxComputerPlayer();
+        }
+
+        public void PlayOnlyTheFirstRound()
+        {
+            SetPlayers();
+            InitMatrix();
+            GetScorePerPlayer();
+        }
+
+        public void IfWantsToPlayAnotherRoundThenStartPlaying()
+        {
+            while (DoTheyWantAnotherRound.doestThePlayerWantsToStartANewRound())
+            {
+                GetScorePerPlayer();
+            }
+        }
+
+        public void GetScorePerPlayer()
         {
             for (int i = 0; i < PlayersAndScores.GetLength(0); i++)
             {
                 for (int j = 0; j < PlayersAndScores.GetLength(1); j++)
                 {
-                    A.PlayerNumberX(j + 1);
-                    if (CanKeepPlaying())
-                    {
-                        Game();
-                        PlayersAndScores[i, j] += GetScore();
-                        RestartPackage();
-                    }
+                    PlayTheGame(i, j);
                 }
             }           
+        }
+
+        public void PlayTheGame(int i, int j)
+        {
+            A.PlayerNumberX(j + 1);
+
+            if (CanKeepPlaying())
+            {
+                Game();
+                SetNewScore(i, j);
+                RestartPackage();
+            }
+        }
+
+        public void SetPlayers()
+        {
+            PlayersAndScores = Players.SetPlayersAndScores();
+        }
+
+        public void SetNewScore(int i, int j)
+        {
+            PlayersAndScores[i, j] += GetScore();
         }
 
         public int GetScore()

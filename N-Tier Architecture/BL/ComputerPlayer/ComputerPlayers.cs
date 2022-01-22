@@ -12,61 +12,88 @@ namespace CardGame.N_Tier_Architecture.BL.Player
     {
         public IfWantsComputerPlayers doesWantPlayers { get; set; }
         public CompuerPlayersMatrix Players { get; set; }
-        public int[,] AllPlayers { get; set; }
         public AskForActions A { get; set; }
+        public int[,] AllPlayers { get; set; }
+        public int MaxI { get; set; }
+        public int MaxJ { get; set; }
+        public int MaxValue { get; set; }
         public ComputerPlayers() : base ()
         {
             doesWantPlayers = new IfWantsComputerPlayers();
             Players = new CompuerPlayersMatrix();
             A = new AskForActions();
+            MaxI = 0;
+            MaxJ = 0;
+            MaxValue = 0;
         }
 
         public void Play()
         {
             if (CreateComputerPlayers())
             {
-                for (int i = 0; i < AllPlayers.GetLength(0); i++)
+                EachPlayerChoosesValue();
+            }
+        }
+
+        public void EachPlayerChoosesValue()
+        {
+            for (int i = 0; i < AllPlayers.GetLength(0); i++)
+            {
+                for (int j = 0; j < AllPlayers.GetLength(1); j++)
                 {
-                    for (int j = 0; j < AllPlayers.GetLength(1); j++)
-                    {
-                        AllPlayers[i, j] = ChooseARandomNumber();
-                        A.TheNumberComputerChooseIs(j, AllPlayers[i, j]);
-                    }
+                    AllPlayers[i, j] = ChooseARandomNumber();
+                    A.TheNumberComputerChooseIs(j, AllPlayers[i, j]);
                 }
             }
         }
 
         public bool CreateComputerPlayers()
         {
-            if (doesWantPlayers.DoTheyWantToHaveComputerPlayers())
+            if (WantComputerPlayers())
             {
-                AllPlayers = Players.SetComputerPlayers(); // יצר את שחקני המחשב
+                AllPlayers = Players.SetComputerPlayers(); 
                 return (true);
             }
 
             return (false);
         }
 
+        public bool WantComputerPlayers()
+        {
+            return (doesWantPlayers.DoTheyWantToHaveComputerPlayers());
+        }
+
         public void GetMaxComputerPlayer()
         {
-            int maxI = 0;
-            int maxJ = 0;
-            int maxValue = 0;
-
             for (int i = 0; i < AllPlayers.GetLength(0); i++)
             {
                 for (int j = 0; j < AllPlayers.GetLength(1); j++)
                 {
-                    if (AllPlayers[i, j] > maxValue)
-                    {
-                        maxValue = AllPlayers[i, j];
-                        maxI = i;
-                        maxJ = j;
-                    }
+                    FindMaxInList(i, j);
                 }
             }
 
-            A.MaxComputerPlayer(maxJ, maxValue);
+            A.MaxComputerPlayer(MaxJ, MaxValue);
+        }
+
+        public void FindMaxInList(int i, int j)
+        {
+            if (CheckIfBiggerThanMax(i, j))
+            {
+                SetAllMaxProperties(i, j);
+            }
+        }
+
+        public void SetAllMaxProperties(int i, int j)
+        {
+            MaxValue = AllPlayers[i, j];
+            MaxI = i;
+            MaxJ = j;
+        }
+
+        public bool CheckIfBiggerThanMax(int i, int j)
+        {
+            return (AllPlayers[i, j] > MaxValue);
         }
     }
 }
