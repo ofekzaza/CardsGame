@@ -16,15 +16,15 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
         public GetANewCard GetCard { get; set; }
         public Cards_Funcs RegularCard { get; set; }
         public AceCard_Funcs AceCard { get; set; }
-        public Cards_Funcs CardsFuncs { get; set; }
         public AskForActions A { get; set; }
         public PrinceOrQueenOrKing_Funcs SpecialCards { get; set; }    
         public bool PlayerWon { get; set; }
         public int ComputersMove { get; set; }
+        //public const List<int> SpecialCards = new List<int> { 11, 12, 13 };
         public const int ace = 1;
         public const int prince = 11;
         public const int queen = 12;
-        public const int king = 11;
+        public const int king = 13;
 
 
         public TheGame_Func()
@@ -34,7 +34,6 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
             GetCard = new GetANewCard();
             RegularCard = new Cards_Funcs();
             AceCard = new AceCard_Funcs();
-            CardsFuncs = new Cards_Funcs();
             A = new AskForActions();
             SpecialCards = new PrinceOrQueenOrKing_Funcs();
             PlayerWon = false;

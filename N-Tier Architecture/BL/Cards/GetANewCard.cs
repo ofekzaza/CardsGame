@@ -30,8 +30,11 @@ namespace CardGame.N_Tier_Architecture.BL.Cards
 
         public void TakeOutAndRemoveFirstCardInTheList()
         {
-            Card = CardList[0];
-            CardList.RemoveAt(0);
+            if (!IsCardsListEmpty() && !(CardList.Count == 0))
+            {
+                Card = CardList[0];
+                CardList.RemoveAt(0);
+            }
         }
 
         public static void RestartList()
@@ -39,6 +42,11 @@ namespace CardGame.N_Tier_Architecture.BL.Cards
             //PlayersCards = new CardsKeeper();
             CardList = Cards;
             //Console.WriteLine("first: " + CardList[0]);
+        }
+
+        public static bool IsCardsListEmpty()
+        {
+            return (CardList is null );
         }
     }
 }

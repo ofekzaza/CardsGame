@@ -65,6 +65,19 @@ namespace CardGame.N_Tier_Architecture.BL.Player
 
         public void GetMaxComputerPlayer()
         {
+            if (AllPlayers != null)
+            {
+                GoAllOverThePlayersAndFindMax();
+                A.MaxComputerPlayer(MaxJ, MaxValue);
+            }
+            else
+            {
+                A.NoComputerPlayers();
+            }
+        }
+
+        public void GoAllOverThePlayersAndFindMax()
+        {
             for (int i = 0; i < AllPlayers.GetLength(0); i++)
             {
                 for (int j = 0; j < AllPlayers.GetLength(1); j++)
@@ -72,8 +85,6 @@ namespace CardGame.N_Tier_Architecture.BL.Player
                     FindMaxInList(i, j);
                 }
             }
-
-            A.MaxComputerPlayer(MaxJ, MaxValue);
         }
 
         public void FindMaxInList(int i, int j)

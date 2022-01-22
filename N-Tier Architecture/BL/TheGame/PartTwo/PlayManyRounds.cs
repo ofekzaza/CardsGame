@@ -51,8 +51,21 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame.PartTwo
 
         public void PlayActions()
         {
+            if (!IsCardPackageNull())
+            {
+                MakeOneMoveAndTheChooseIfWantToKeepPlayingOrStop();
+            }
+        }
+
+        public void MakeOneMoveAndTheChooseIfWantToKeepPlayingOrStop()
+        {
             gameFuncs.Play();
             gameFuncs.PlayerChooseToStopPlaying();
+        }
+
+        public bool IsCardPackageNull()
+        {
+            return (GetANewCard.IsCardsListEmpty());
         }
 
         public void RestartAllInfoBeforeStartPlaying()
