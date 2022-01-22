@@ -13,7 +13,7 @@ namespace CardGame
             //newGame.StartPlaying();
 
             ManyPlayersGame_Funcs game = new ManyPlayersGame_Funcs();
-            game.DoesWantToPlay();
+            game.StartPlayingTheWholeGame();
 
 
             //int[,] scores = game.PlayersAndScores;

@@ -24,9 +24,14 @@ namespace CardGame.N_Tier_Architecture.BL.Cards
         public void GetNewCard()
         {
             A.AskToTakeACard();
+            TakeOutAndRemoveFirstCardInTheList();
+            A.ChosenCard(Card);
+        }
+
+        public void TakeOutAndRemoveFirstCardInTheList()
+        {
             Card = CardList[0];
             CardList.RemoveAt(0);
-            A.ChosenCard(Card);
         }
 
         public static void RestartList()

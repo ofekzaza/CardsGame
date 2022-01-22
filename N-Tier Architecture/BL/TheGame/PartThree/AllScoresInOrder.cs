@@ -9,12 +9,16 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame.PartThree
         public List<int> Scores { get; set; }
         public List<int> ScoresInOrder { get; set; }
         public int[,] scores;
+        public int MaxIndex { get; set; }
+        public int MaxValue { get; set; }
 
         public AllScoresInOrder(int[,] Score) : base()
         {
             scores = Score;
             Scores = new List<int>();
             ScoresInOrder = new List<int>();
+            MaxIndex = 0;
+            MaxValue = 0;
         }
 
         public void OrderScoreList()
@@ -28,19 +32,37 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame.PartThree
         public int FindMaxValue()
         {
             GetAllScores();
-            int index = 0;
-            int maxValue = 0; 
+            FindMaxInTheWholeList();
+            RemoveFoundMaxFromList();
+
+            return (MaxValue);
+        }
+
+        public void RemoveFoundMaxFromList()
+        {
+            Scores.RemoveAt(MaxIndex);
+        }
+
+        public void FindMaxInTheWholeList()
+        {
             for (int i = 0; i < Scores.Count; i++)
             {
-                if (Scores[i] > maxValue)
-                {
-                    maxValue = Scores[i];
-                    index = i;
-                }
+                CheckIfBiggerThanMax(i);
             }
+        }
 
-            Scores.RemoveAt(index);
-            return maxValue;
+        public void CheckIfBiggerThanMax(int i)
+        {
+            if (Scores[i] > MaxValue)
+            {
+                SetMaxProperties(i);
+            }
+        }
+
+        public void SetMaxProperties(int i)
+        {
+            MaxValue = Scores[i];
+            MaxIndex = i;
         }
 
         public void GetAllScores()
