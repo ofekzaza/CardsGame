@@ -9,21 +9,8 @@ namespace CardGame
     {
         static void Main(string[] args)
         {
-            //TheGame newGame = new TheGame();
-            //newGame.StartPlaying();
-
-            ManyPlayersGame_Funcs game = new ManyPlayersGame_Funcs();
-            game.StartPlayingTheWholeGame();
-
-
-            //int[,] scores = game.PlayersAndScores;
-
-            //AllScoresInOrder ScoresInOrder = new AllScoresInOrder(scores);
-            //ScoresInOrder.OrderScoreList();
-            //foreach (int score in ScoresInOrder.ScoresInOrder)
-            //{
-            //    Console.WriteLine(score + " -> ");
-            //}
-    }
+            ManyPlayersGame game = new ManyPlayersGame();
+            game.StartTheGame();
+        }
     }
 }
