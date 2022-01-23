@@ -18,7 +18,7 @@ namespace CardGame.N_Tier_Architecture.UI.Print
 
         public void PlayersMatrixPrint(int[,] players)
         {
-            Console.WriteLine("\n");
+            Console.WriteLine("\nAll Players Scores From The Game:");
             for (int i = 0; i < players.GetLength(0); i++)
             {
                 for (int j = 0; j < players.GetLength(1); j++)
@@ -26,6 +26,17 @@ namespace CardGame.N_Tier_Architecture.UI.Print
                     Console.WriteLine("Player number " + (j + 1) + " , score: " + players[i, j]);
                 }
             }
+        }
+        public void PrintScoresInOrder(List<int> Scores)
+        {
+            Console.WriteLine("\nAll Scores In Order:");
+
+            for (int i = 0; i < Scores.Count - 1; i++)
+            {
+                Console.Write(Scores[i] + " -> ");
+            }
+
+            Console.WriteLine(Scores[Scores.Count - 1]);
         }
 
         public void RoundIsOver()

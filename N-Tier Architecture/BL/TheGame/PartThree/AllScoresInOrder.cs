@@ -4,38 +4,43 @@ using System.Text;
 
 namespace CardGame.N_Tier_Architecture.BL.TheGame.PartThree
 {
-    class AllScoresInOrder : ManyPlayersGame_Funcs
+    class AllScoresInOrder
     {
         public List<int> Scores { get; set; }
         public List<int> ScoresInOrder { get; set; }
-        public int[,] scores;
         public int MaxIndex { get; set; }
         public int MaxValue { get; set; }
 
-        public AllScoresInOrder(int[,] Score) : base()
+        public AllScoresInOrder() 
         {
-            scores = Score;
             Scores = new List<int>();
             ScoresInOrder = new List<int>();
             MaxIndex = 0;
             MaxValue = 0;
         }
 
-        public void OrderScoreList()
+        public void OrderScoreListint(int[,] scoresPerPlayer)
         {
-            while (Scores != null)
+            Scores = GetAllScores(scoresPerPlayer);
+
+            while (IsListGood())
             {
-                ScoresInOrder.Add(FindMaxValue());
+                FindMaxInTheWholeList();
+                ScoresInOrder.Add(MaxValue);
+                RemoveFoundMaxFromList();
+                RestartMaxProperties();
             }
         }
 
-        public int FindMaxValue()
+        public void RestartMaxProperties()
         {
-            GetAllScores();
-            FindMaxInTheWholeList();
-            RemoveFoundMaxFromList();
+            MaxIndex = 0;
+            MaxValue = 0;
+        }
 
-            return (MaxValue);
+        public bool IsListGood()
+        {
+            return (Scores != null && Scores.Count != 0);
         }
 
         public void RemoveFoundMaxFromList()
@@ -65,15 +70,19 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame.PartThree
             MaxIndex = i;
         }
 
-        public void GetAllScores()
+        public List<int> GetAllScores(int[,] scoresPerPlayer)
         {
-            for (int i = 0; i < scores.GetLength(0); i++)
+            List<int> newList = new List<int>();
+
+            for (int i = 0; i < scoresPerPlayer.GetLength(0); i++)
             {
-                for (int j = 0; j < scores.GetLength(1); j++)
+                for (int j = 0; j < scoresPerPlayer.GetLength(1); j++)
                 {
-                    Scores.Add(scores[i, j]);
+                    newList.Add(scoresPerPlayer[i, j]);
                 }
             }
+
+            return newList;
         }
     }
 }
