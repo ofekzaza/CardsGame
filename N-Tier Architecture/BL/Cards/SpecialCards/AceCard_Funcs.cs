@@ -1,4 +1,5 @@
 ﻿using CardGame.Mocks;
+using CardGame.N_Tier_Architecture.UI.Print;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,9 +10,11 @@ namespace CardGame.N_Tier_Architecture.BL.Cards
     {
         public const int CardNumber = 1;
         public const int Value = 11;
+        public new SpecialCardsActions A { get; set; }
 
         public AceCard_Funcs() : base ()
         {
+            A = new SpecialCardsActions();
         }
 
         public new void NewCard(int Card)

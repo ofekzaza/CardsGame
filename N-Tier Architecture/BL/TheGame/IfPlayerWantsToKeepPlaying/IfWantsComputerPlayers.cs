@@ -17,7 +17,7 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame.IfPlayerWantsToKeepPlaying
 
         public new int GetPlayersAnswerForKeepPlayingTheGame()
         {
-            A.DoYouWantComputerPlayers();
+            B.DoYouWantComputerPlayers();
             return int.Parse(Console.ReadLine());
         }
     }

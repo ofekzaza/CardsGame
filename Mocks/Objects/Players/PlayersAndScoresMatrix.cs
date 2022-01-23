@@ -7,12 +7,12 @@ namespace CardGame.Common_Layer.Objects
 {
     class PlayersAndScoresMatrix 
     {
-        public AskForActions A { get; set; }
+        public PlayersAndComPlayersActions A { get; set; }
         public int playersAmount { get; set; }
 
         public PlayersAndScoresMatrix()
         {
-            A = new AskForActions();
+            A = new PlayersAndComPlayersActions();
         }
 
         public int HowManyPlayersPlayTheGame()

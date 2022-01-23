@@ -11,7 +11,7 @@ namespace CardGame.Mocks
     {
         public Cards_Funcs() : base ()
         {
-            A = new AskForActions();
+            A = new CardsActions();
         } 
         public void NewCard(int Card)
         {

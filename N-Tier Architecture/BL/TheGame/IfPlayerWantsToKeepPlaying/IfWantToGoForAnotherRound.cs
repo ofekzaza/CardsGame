@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CardGame.N_Tier_Architecture.UI.Print;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,8 +7,10 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame.IfPlayerWantsToKeepPlaying
 {
     class IfWantToGoForAnotherRound : IfWantsToKeepPlaying
     {
+        public RoundsAndLevels C { get; set; }
         public IfWantToGoForAnotherRound() : base()
         {
+            C = new RoundsAndLevels();
         }
 
         public new bool doestThePlayerWantsToTakeOutANewCard()
@@ -17,7 +20,7 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame.IfPlayerWantsToKeepPlaying
 
         public new int GetPlayersAnswerForKeepPlayingTheGame()
         {
-            A.NewRound();
+            C.NewRound();
             return int.Parse(Console.ReadLine());
         }
     }

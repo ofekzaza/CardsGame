@@ -1,6 +1,7 @@
 ﻿using CardGame.Mocks;
 using CardGame.N_Tier_Architecture.BL.Cards;
 using CardGame.N_Tier_Architecture.BL.TheGame.PartTwo;
+using CardGame.N_Tier_Architecture.UI.Print;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,11 +12,13 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
     {
         public TheGame_Func gameFuncs { get; set; }
         public PlayManyRounds manyRounds { get; set; }
+        public WinningAnouncment B { get; set; }
 
         public TheGame() : base()
         {
             gameFuncs = new TheGame_Func();
             manyRounds = new PlayManyRounds();
+            B = new WinningAnouncment();
         }
 
         public void StartPlaying()
@@ -38,7 +41,7 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
 
         public void WinningAmount()
         {
-            A.PlayersWinAmount(GetANewCard.PlayersCards.WinningCount);
+            B.PlayersWinAmount(GetANewCard.PlayersCards.WinningCount);
         }
     }
 }

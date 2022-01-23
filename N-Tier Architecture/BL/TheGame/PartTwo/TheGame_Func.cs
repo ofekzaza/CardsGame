@@ -16,7 +16,9 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
         public GetANewCard GetCard { get; set; }
         public Cards_Funcs RegularCard { get; set; }
         public AceCard_Funcs AceCard { get; set; }
-        public AskForActions A { get; set; }
+        public CardsActions A { get; set; }
+        public SpecialCardsActions B { get; set; }
+        public WinningAnouncment C { get; set; }
         public PrinceOrQueenOrKing_Funcs SpecialCards { get; set; }    
         public bool PlayerWon { get; set; }
         public int ComputersMove { get; set; }
@@ -34,7 +36,9 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
             GetCard = new GetANewCard();
             RegularCard = new Cards_Funcs();
             AceCard = new AceCard_Funcs();
-            A = new AskForActions();
+            A = new CardsActions();
+            B = new SpecialCardsActions();
+            C = new WinningAnouncment();
             SpecialCards = new PrinceOrQueenOrKing_Funcs();
             PlayerWon = false;
         }
@@ -78,7 +82,7 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
         {
             if (GetCard.Card == king)
             {
-                A.PickedKing();
+                B.PickedKing();
                 return (true);
             }
 
@@ -89,7 +93,7 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
         {
             if (GetCard.Card == queen)
             {
-                A.PickedQueen();
+                B.PickedQueen();
                 return (true);
             }
 
@@ -100,7 +104,7 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
         {
             if (GetCard.Card == prince)
             {
-                A.PickedPrince();
+                B.PickedPrince();
                 return (true);
             }
 
@@ -130,12 +134,12 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
             {
                 PlayerWon = true;
                 GetANewCard.PlayersCards.WinningCount++;
-                A.PlayerWonTheGame();
+                C.PlayerWonTheGame();
             }
             else
             {
                 PlayerWon = false;
-                A.ComputerWonTheGame(ComputersMove, GetANewCard.PlayersCards.CardsPackage);
+                C.ComputerWonTheGame(ComputersMove, GetANewCard.PlayersCards.CardsPackage);
             }
         }
 
