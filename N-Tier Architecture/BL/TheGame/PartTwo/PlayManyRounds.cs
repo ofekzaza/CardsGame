@@ -13,11 +13,11 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame.PartTwo
         public IfWantToGoForAnotherRound keepPlaying { get; set; }
         public ComputerMakesItsMove CompMove { get; set; }
         public TheGame_Func gameFuncs { get; set; }
-        private AskForActions _a;
+        public RoundsAndLevels A { get; set; }
 
         public PlayManyRounds()
         {
-            _a = new AskForActions();
+            A = new RoundsAndLevels();
             CompMove = new ComputerMakesItsMove();
             keepPlaying = new IfWantToGoForAnotherRound();
             gameFuncs = new TheGame_Func();
@@ -84,7 +84,7 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame.PartTwo
         {
             if (!CompMove.IsOver21())
             {
-                _a.HarderLevel();
+                A.HarderLevel();
                 CompMove.startGuessingFrom++;
             }
         }

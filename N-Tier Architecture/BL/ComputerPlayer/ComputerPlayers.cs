@@ -12,7 +12,7 @@ namespace CardGame.N_Tier_Architecture.BL.Player
     {
         public IfWantsComputerPlayers doesWantPlayers { get; set; }
         public CompuerPlayersMatrix Players { get; set; }
-        public AskForActions A { get; set; }
+        public PlayersAndComPlayersActions A { get; set; }
         public int[,] AllPlayers { get; set; }
         public int MaxI { get; set; }
         public int MaxJ { get; set; }
@@ -21,7 +21,7 @@ namespace CardGame.N_Tier_Architecture.BL.Player
         {
             doesWantPlayers = new IfWantsComputerPlayers();
             Players = new CompuerPlayersMatrix();
-            A = new AskForActions();
+            A = new PlayersAndComPlayersActions();
             MaxI = 0;
             MaxJ = 0;
             MaxValue = 0;

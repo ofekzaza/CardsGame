@@ -20,7 +20,7 @@ namespace CardGame.N_Tier_Architecture.BL.Player
         {
             if (GetCardsPackage())
             {
-                a.PackageWorthIsOver21();
+                A.PackageWorthIsOver21();
                 return (false);
             }
 

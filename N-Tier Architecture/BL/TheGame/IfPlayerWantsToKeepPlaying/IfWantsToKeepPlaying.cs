@@ -1,4 +1,5 @@
 ﻿using CardGame.Mocks;
+using CardGame.N_Tier_Architecture.UI.Print;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,8 +10,11 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
     {
         public const int KeepPlaying = 1;
         public const int StopPlaying = 0;
+        public PlayersAndComPlayersActions B { get; set; }
+
         public IfWantsToKeepPlaying() : base ()
         {
+            B = new PlayersAndComPlayersActions();
         }
 
         public bool doestThePlayerWantsToTakeOutANewCard()
@@ -25,7 +29,7 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame
 
         public int GetPlayersAnswerForNewRound()
         {
-            A.RoundIsOver();
+            B.RoundIsOver();
             return int.Parse(Console.ReadLine());
         }
 

@@ -1,6 +1,7 @@
 ﻿using CardGame.Common_Layer.Objects;
 using CardGame.N_Tier_Architecture.BL.Cards;
 using CardGame.N_Tier_Architecture.BL.Player;
+using CardGame.N_Tier_Architecture.UI.Print;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,6 +14,8 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame.PartThree
         public IfWantsToKeepPlaying DoTheyWantAnotherRound { get; set; }
         public ComputerPlayers CompPlayers { get; set; }
 
+        public PlayersAndComPlayersActions B { get; set; }
+
         public int[,] PlayersAndScores { get; set; }
 
         public ManyPlayersGame_Funcs() : base ()
@@ -20,6 +23,7 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame.PartThree
             Players = new PlayersAndScoresMatrix();
             DoTheyWantAnotherRound = new IfWantsToKeepPlaying();
             CompPlayers = new ComputerPlayers();
+            B = new PlayersAndComPlayersActions();
         }
 
         public void StartPlayingTheWholeGame()
@@ -28,7 +32,7 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame.PartThree
             IfWantsToPlayAnotherRoundThenStartPlaying();
             ComputerPlayersPlayTheirTurn();
 
-            A.PlayersMatrixPrint(PlayersAndScores);
+            B.PlayersMatrixPrint(PlayersAndScores);
         }
 
         public void ComputerPlayersPlayTheirTurn()
@@ -65,7 +69,7 @@ namespace CardGame.N_Tier_Architecture.BL.TheGame.PartThree
 
         public void PlayTheGame(int i, int j)
         {
-            A.PlayerNumberX(j + 1);
+            B.PlayerNumberX(j + 1);
 
             if (CanKeepPlaying())
             {
