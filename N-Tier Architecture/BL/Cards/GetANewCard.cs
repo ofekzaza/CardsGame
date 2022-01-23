@@ -39,9 +39,7 @@ namespace CardGame.N_Tier_Architecture.BL.Cards
 
         public static void RestartList()
         {
-            //PlayersCards = new CardsKeeper();
             CardList = Cards;
-            //Console.WriteLine("first: " + CardList[0]);
         }
 
         public static bool IsCardsListEmpty()
